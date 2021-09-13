@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
 class quotes extends StatefulWidget {
   //quotes({Key? key}) : super(key: key);
@@ -16,15 +18,17 @@ class _quotesState extends State<quotes> {
             centerTitle: true,
             title: Text('All Quotes'),
             elevation: 0),
-        body: ListView.builder(itemBuilder: (context, index) {
+        body: ListView.builder(
+            //itemCount: _Quotes.length,
+            itemBuilder: (context, index) {
           return Card(
               color: Colors.grey[200],
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text('quotes'),
+                  Text(''),
                   SizedBox(height: 5.0, width: 5.0),
-                  Text('author',
+                  Text('',
                       textAlign: TextAlign.end,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
