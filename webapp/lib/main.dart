@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:webapp/navBar/navBar.dart';
-import 'package:webapp/landingPage/landinPage.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:webapp/widgets/layout.dart';
 
 void main() {
-  runApp(MaterialApp(home: Home()));
+  runApp(MyApp());
 }
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  colors: [
-                    Color.fromRGBO(125, 50, 24, 0.5),
-                    Color.fromRGBO(100, 210, 120, 0.1)
-                  ],
-                  end: Alignment.centerRight)),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Navbar(),
-                LandingPage(),
-              ])),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Our App Title',
+      theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
+          textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme)
+              .apply(bodyColor: Colors.black),
+          pageTransitionsTheme: PageTransitionsTheme(builders: {
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder()
+          }),
+          primaryColor: Colors.blue),
+      home: SiteLayout(),
     );
   }
 }
